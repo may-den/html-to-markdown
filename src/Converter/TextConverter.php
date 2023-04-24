@@ -19,7 +19,8 @@ class TextConverter implements ConverterInterface
         $markdown = \preg_replace('~\s+~u', ' ', $markdown);
         \assert(\is_string($markdown));
 
-        // Escape the following characters: '*', '_', '[', ']' and '\'
+        // Escape the following characters:
+        // '!', '~', '>', '+', '-', '(', ')', '{', '}', '`', '#', '*', '_', '[', ']' and '\'
         if (($parent = $element->getParent()) && $parent->getTagName() !== 'div') {
             $markdown = \preg_replace('~([\\!\\~>\\+\\-\\(\\)\\{\\}\\`#*_\\[\\]\\\\])~u', '\\\\$1', $markdown);
             \assert(\is_string($markdown));
